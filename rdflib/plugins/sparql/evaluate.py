@@ -111,13 +111,10 @@ def evalJoin(ctx, join):
 
 
 def evalUnion(ctx, union):
-    res = set()
     for x in evalPart(ctx, union.p1):
-        res.add(x)
         yield x
     for x in evalPart(ctx, union.p2):
-        if x not in res:
-            yield x
+        yield x
 
 
 def evalMinus(ctx, minus):
