@@ -2,6 +2,8 @@ import collections
 import itertools
 import datetime
 
+import isodate
+
 from rdflib.namespace import NamespaceManager
 from rdflib import Variable, BNode, Graph, ConjunctiveGraph, URIRef, Literal
 from rdflib.term import Node
@@ -229,7 +231,7 @@ class QueryContext(object):
             self.graph = graph
 
         self.prologue = None
-        self.now = datetime.datetime.now()
+        self.now = datetime.datetime.now(isodate.tzinfo.UTC)
 
         self.bnodes = collections.defaultdict(BNode)
 
